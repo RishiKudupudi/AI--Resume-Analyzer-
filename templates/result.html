@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resume Analysis Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Resume Analysis Result</h1>
+
+<h3>Uploaded File:</h3>
+<p>{{ filename }}</p>
+
+<h3>Resume Processed Successfully ✅</h3>
+
+<div class="score-card">
+    <h2>ATS Score</h2>
+    <p class="ats-score">{{ ats_score }}%</p>
+</div>
+<h3>ATS Breakdown</h3>
+<ul>
+    <li>Skill Score: {{ skill_score }}%</li>
+    <li>Project Score: {{ project_score }}%</li>
+    <li>Certification Score: {{ certification_score }}%</li>
+    <li>Education Score: {{ education_score }}%</li>
+</ul>
+
+<h3>Verdict:</h3>
+<p>{{ verdict }}</p>
+
+<h3>Predicted Domain:</h3>
+<p>{{ domain }}</p>
+
+<h3>Domain Confidence:</h3>
+<p>{{ domain_confidence }}%</p>
+
+<h3>Resume Checklist</h3>
+<ul>
+    <li>
+        {% if has_education %}
+            ✓ Education section
+        {% else %}
+            ✗ Education section
+        {% endif %}
+    </li>
+    <li>
+        {% if has_projects %}
+            ✓ Projects section
+        {% else %}
+            ✗ Projects
+        {% endif %}
+    </li>
+    <li>
+        {% if has_certifications %}
+            ✓ Certifications section
+        {% else %}
+            ✗ Certifications section
+        {% endif %}
+    </li>
+    <li>
+        {% if has_internships %}
+            ✓ Internships section
+        {% else %}
+            ✗ Internships
+        {% endif %}
+    </li>
+    <li>
+        {% if has_achievements %}
+            ✓ Achievements section
+        {% else %}
+            ✗ Achievements section
+        {% endif %}
+    </li>
+</ul>
+
+<h3>Skills Found:</h3>
+<ul>
+{% for skill in found_skills %}
+    <li class="skills-found">✓ {{ skill }}</li>
+{% endfor %}
+</ul>
+
+<h3>Missing Skills:</h3>
+
+{% if missing_skills %}
+<ul>
+{% for skill in missing_skills %}
+    <li class="missing-skills">✗ {{ skill }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>None 🎉</p>
+{% endif %}
+
+<h3>Recommended Learning:</h3>
+
+{% if missing_skills %}
+<ul>
+{% for skill in missing_skills %}
+    <li>Learn {{ skill }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No recommendations. Resume already covers required skills 🎉</p>
+{% endif %}
+
+<h3>Recommended Jobs:</h3>
+
+<ul>
+{% for job in recommended_jobs %}
+    <li>{{ job }}</li>
+{% endfor %}
+</ul>
+<h3>Strengths:</h3>
+<ul>
+    {% for item in strengths %}
+        <li>✅{{ item }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Weaknesses:</h3>
+<ul>
+    {% for item in weaknesses %}
+        <li>❌{{ item }}</li>
+    {% endfor %}
+</ul>
+
+<h3>Resume Improvement Suggestions:</h3>
+<ul>
+    {% for item in suggestions %}
+        <li>💡{{ item }}</li>
+    {% endfor %}
+</ul>
+<br><br>
+<a href="/download_report">
+    <button>Download Resume Report PDF</button> 
+</a>
+
+
+</div>
+
+</body>
+</html>
