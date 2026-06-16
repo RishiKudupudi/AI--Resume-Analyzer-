@@ -37,7 +37,7 @@ def upload():
             if text:
                 resume_text += text
 
-    skills_db = [
+    cse_skills=[
         "python",
         "java",
         "sql",
@@ -49,23 +49,33 @@ def upload():
         "docker",
         "machine learning",
         "react",
-        "mongodb",
-        # civil
+        "mongodb"
+    ]
+
+    civil_skills=[
         "autocad",
         "staad pro",
         "etabs",
         "revit",
-        "civil 3d",
-        # mechanical
+        "civil 3d"
+    ]
+
+    mechanical_skills=[
         "solidworks",
         "catia",
-        "ansys",
-        #electical
+        "ansys"
+    ]
+
+    ece_skills=[
+        "vlsi",
+        "verilog",
+        "embedded systems",
+        "iot",
+        "arduino",
+        "microcontroller",
         "matlab",
-        "pscad",
+        "pascad",
         "power bi"
-
-
     ]
 
     domains = {
@@ -190,7 +200,7 @@ def upload():
         2
     )
 
-    skill_score = (len(found_skills) / len(skills_db)) * 70
+    skill_score = (len(found_skills)/len(domains[predicted_domain]))*70
 
     project_score = 10 if has_projects else 0
 
