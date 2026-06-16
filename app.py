@@ -49,7 +49,14 @@ def upload():
         "docker",
         "machine learning",
         "react",
-        "mongodb"
+        "mongodb",
+        "c",
+        "c++",
+        "nodejs",
+        "git",
+        "github",
+        "data science",
+        "tensorflow"
     ]
 
     civil_skills=[
@@ -57,13 +64,27 @@ def upload():
         "staad pro",
         "etabs",
         "revit",
-        "civil 3d"
+        "civil 3d",
+        "surveying",
+        "quantity surveying",
+        "structural analysis",
+        "construction management",
+        "estimating",
+        "primavera",
+        "ms project"
     ]
 
     mechanical_skills=[
         "solidworks",
         "catia",
-        "ansys"
+        "ansys",
+        "cnc",
+        "creo",
+        "autocad mechanical",
+        "thermal engineering",
+        "fluid mechanics",
+        "cad",
+        "cam"
     ]
 
     ece_skills=[
@@ -75,7 +96,13 @@ def upload():
         "microcontroller",
         "matlab",
         "pascad",
-        "power bi"
+        "power bi",
+        "fpga",
+        "rtl design",
+        "digital electronics",
+        "analog electronics",
+        "pcb design",
+        "communication systems"
     ]
 
     domains = {
@@ -216,10 +243,12 @@ def upload():
      2
   )
 
-    if ats_score >= 80:
+    if ats_score >= 85:
         verdict = "Excellent"
-    elif ats_score >= 60:
+    elif ats_score >= 70:
         verdict = "Good"
+    elif ats_score>=50:
+        verdict="Average"
     else:
         verdict = "Needs Improvement"
 
@@ -250,6 +279,8 @@ def upload():
         weaknesses.append("No Achievements")
     if not has_internships:
         weaknesses.append("No Internships")
+    if len(weaknesses)==0:
+        weaknesses.append("No major weaknesses found")
 
     suggestions = []
     if not has_internships:
@@ -290,6 +321,16 @@ def upload():
         recommended_jobs.append("Database Administrator")
     if "machine learning" in found_skills:
         recommended_jobs.append("Machine Learning Engineer")
+    if "aws" in found_skills:
+        recommended_jobs.append("Cloud Engineer")
+    if "docker" in found_skills:
+        recommended_jobs.append("DevOps Engineer")
+    if "tensorflow" in found_skills:
+        recommended_jobs.append("AI Engineer")
+    if "data science" in found_skills:
+        recommended_jobs.append("Data Engineer")
+    
+    
 
     #ece job recommendations
     if "vlsi" in found_skills:
@@ -304,6 +345,16 @@ def upload():
         recommended_jobs.append("Embedded Systems Engineer")
     if "microcontroller" in found_skills:
         recommended_jobs.append("Embedded Systems Engineer")
+    if "fgpa" in found_skills:
+        recommended_jobs.append("FGPA Engineer")
+    if "rtl design" in found_skills:
+        recommended_jobs.append("RTL deign  Engineer")
+    if "pcb design" in found_skills:
+        recommended_jobs.append("PCB design Engineer")
+    if "communication systems" in found_skills:
+        recommended_jobs.append("Communication Engineer")
+    if "matlab" in found_skills:
+        recommended_jobs.append("Simulation Engineer")
 
     #eee job recommendations
 
@@ -326,16 +377,34 @@ def upload():
         recommended_jobs.append("Design Engineer")
     if "manufacturing" in found_skills:
         recommended_jobs.append("Manufacturing Engineer")
+
+    if "ansys" in found_skills:
+       recommended_jobs.append("CAE Engineer")
+    if "cad" in found_skills:
+       recommended_jobs.append("CAD design Engineer")
+    if "cam" in found_skills:
+        recommended_jobs.append("Manufacturing Engineer")
+    if "thermal Engineering" in found_skills:
+        recommended_jobs.append("Thermal Engineer")
+    if "fluid mechanics" in found_skills:
+        recommended_jobs.append("CFD Engineer")
+    
     #civil job recommendations
 
     if "staad pro" in found_skills:
         recommended_jobs.append("Structural Engineer")
     if "surveying" in found_skills:
         recommended_jobs.append("Surveyor")
-    if "construction" in found_skills:
+    if "construction management" in found_skills:
         recommended_jobs.append("Construction Engineer")
-    if "autocad civil" in found_skills:
-        recommended_jobs.append("Civil Engineer")
+    if "primavera" in found_skills:
+        recommended_jobs.append("Planning Engineer")
+    if "ms project" in found_skills:
+        recommended_jobs.append("Project Engineer")
+    if "etabs" in found_skills:
+        recommended_jobs.append("Structural Engineer")
+    if "revit" in found_skills:
+        recommended_jobs.append("BIM Engineer")
 
     global report_data
     report_data = {
