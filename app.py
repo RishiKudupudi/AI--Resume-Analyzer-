@@ -50,6 +50,22 @@ def upload():
         "machine learning",
         "react",
         "mongodb",
+        # civil
+        "autocad",
+        "staad pro",
+        "etabs",
+        "revit",
+        "civil 3d",
+        # mechanical
+        "solidworks",
+        "catia",
+        "ansys",
+        #electical
+        "matlab",
+        "pscad",
+        "power bi"
+
+
     ]
 
     domains = {
