@@ -22,7 +22,10 @@ def upload():
 
     file = request.files["resume"]
 
-    file.save("resumes/" + file.filename)
+    import os
+    os.makedirs("resumes",exist_ok=True)
+    file_path=os.path.join("resumes",file.filename)
+    file.save(file_path)
     pdf_path = "resumes/" + file.filename
 
     with pdfplumber.open(pdf_path) as pdf:
